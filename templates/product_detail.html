@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} | VASTRIKA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand brand-logo" href="/">VASTRIKA</a>
+        <div class="ms-auto nav-icons">
+            <a href="/login" title="Login"><img class="nav-icon-gif" src="{% static 'icons/wired-lineal-268-avatar-man-hover-glance (1).gif' %}" alt="Login"></a>
+            <a href="/cart" class="cart-link"><img class="nav-icon-gif" src="{% static 'icons/system-solid-146-cart-hover-pinch.gif' %}" alt="Shopping cart"><span id="cartCount">0</span></a>
+        </div>
+    </div>
+</nav>
+
+<main class="section-padding product-detail-page">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="product-detail-image">
+                    <img src="{% static product.image %}" alt="{{ product.name }}">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <p class="product-category">{{ product.category }}</p>
+                <h1 class="product-title">{{ product.name }}</h1>
+                <div class="rating mb-3">{{ product.rating }}</div>
+                <h2 class="product-price">₹{{ product.price }}</h2>
+                <p class="product-description">Product details and styling information will be added here.</p>
+                <hr>
+                <div class="quantity-section">
+                    <strong>QUANTITY</strong>
+                    <div class="quantity-control">
+                        <button type="button" onclick="changeQuantity(-1)">−</button>
+                        <span id="quantity">1</span>
+                        <button type="button" onclick="changeQuantity(1)">+</button>
+                    </div>
+                </div>
+                <button class="btn btn-dark product-cart-btn" onclick="addProductFromDetails()">ADD TO CART</button>
+                <button class="btn btn-outline-dark product-buy-btn" onclick="buyNow()">BUY NOW</button>
+            </div>
+        </div>
+    </div>
+</main>
+{% if recommendations %}
+<section class="section-padding recommended-products">
+    <div class="container">
+        <div class="section-heading">
+            <p>YOU MAY ALSO LIKE</p>
+            <h2>Recommended for You</h2>
+        </div>
+        <div class="row g-4">
+            {% for item in recommendations %}
+            <div class="col-6 col-lg-3">
+                <a class="recommended-product-link" href="{% url 'product_detail' item.slug %}">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="{% static item.image %}" alt="{{ item.name }}">
+                        </div>
+                        <div class="product-info">
+                            <p class="product-category">{{ item.category }}</p>
+                            <h5>{{ item.name }}</h5>
+                            <div class="rating">{{ item.rating }}</div>
+                            <strong>₹{{ item.price }}</strong>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+<script>
+    window.PRODUCT_DETAILS = {
+        name: '{{ product.name|escapejs }}',
+        price: {{ product.price }}
+    };
+</script>
+<script src="{% static 'js/script.js' %}?v=3"></script>
+</body>
+</html>

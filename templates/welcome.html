@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | VASTRIKA</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+</head>
+
+<body class="welcome-page">
+    <main class="welcome-container" aria-live="polite">
+        <p class="welcome-brand">VASTRIKA</p>
+        <p class="welcome-eyebrow">LOGIN SUCCESSFUL</p>
+        <h1>Welcome <span id="welcomeName">{{ user_name }}</span></h1>
+        <p class="welcome-message">Your style journey continues here.</p>
+        <div class="welcome-loader" aria-hidden="true"></div>
+    </main>
+
+    <script>
+        window.setTimeout(function () {
+            window.location.replace('/');
+        }, 1800);
+    </script>
+</body>
+
+</html>

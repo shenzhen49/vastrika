@@ -1,0 +1,569 @@
+<!--PRODUCTS PAGE-->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop | VASTRIKA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body class="shop-page">
+
+<nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
+
+    <div class="container">
+
+        <a class="navbar-brand brand-logo" href="/">
+             VASTRIKA
+        </a>
+
+        <button class="navbar-toggler"
+                data-bs-toggle="collapse"
+                data-bs-target="#nav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" data-nav="home" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" data-nav="shop" href="/shop">Shop</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-nav="men" href="/shop?category=men">Men</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-nav="women" href="/shop?category=women">Women</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-nav="kids" href="/shop?category=kids">Kids</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-nav="about" href="{% url 'about' %}">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-nav="contact" href="{% url 'contact' %}">Contact</a>
+                </li>
+
+            </ul>
+
+            <div class="nav-icons">
+
+                <a href="/login" title="Login">
+                    <img class="nav-icon-gif"
+                         src="{% static 'icons/wired-lineal-268-avatar-man-hover-glance (1).gif' %}"
+                         alt="Login">
+                </a>
+
+                <a href="/cart" class="cart-link">
+                    <img class="nav-icon-gif"
+                         src="{% static 'icons/system-solid-146-cart-hover-pinch.gif' %}"
+                         alt="Shopping cart">
+                    <span id="cartCount">0</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- SHOP HEADER -->
+
+<section class="shop-header">
+
+    <div class="container text-center">
+
+        <p>VASTRIKA COLLECTION</p>
+
+        <h1>Find Your Style</h1>
+
+        <span>
+            Curated pieces for your everyday expression.
+        </span>
+
+    </div>
+
+</section>
+
+
+<section class="section-padding">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- PRODUCTS -->
+
+            <div class="col-12">
+
+                <div class="shop-toolbar">
+
+                    <div>
+                        <span id="productCount">
+                            26 Products
+                        </span>
+                    </div>
+
+                    <div>
+
+                        <input type="text"
+                               id="searchInput"
+                               class="search-box"
+                               placeholder="Search products...">
+
+                    </div>
+
+                </div>
+
+
+                <div class="row g-4" id="productGrid">
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="kurotsuki">
+                        <div class="product-card" data-product-url="/product/kurotsuki">
+                            <div class="product-image">
+                                <span class="product-badge">NEW</span>
+                                <img src="{% static 'images/VASTRIKA all tshirts.jpeg' %}" alt="Kurotsuki">
+                                <button class="quick-add" onclick="addToCart('Kurotsuki',599)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / T-SHIRTS</p>
+                                <h5>Kurotsuki</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹599</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="urban denim jeans">
+                        <div class="product-card" data-product-url="/product/urban-denim-jeans">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA jeans men.jpeg' %}" alt="Urban Denim Jeans">
+                                <button class="quick-add" onclick="addToCart('Urban Denim Jeans',799)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / JEANS</p>
+                                <h5>Urban Denim Jeans</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹799</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="yumeiro">
+                        <div class="product-card" data-product-url="/product/yumeiro">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA pink tshirt.jpeg' %}" alt="Yumeiro">
+                                <button class="quick-add" onclick="addToCart('Yumeiro',599)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / T-SHIRTS</p>
+                                <h5>Yumeiro</h5>
+                                <div class="rating">★★★★☆</div>
+                                <strong>₹599</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="aozora">
+                        <div class="product-card" data-product-url="/product/aozora">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA tshirt sea green.jpeg' %}" alt="Aozora">
+                                <button class="quick-add" onclick="addToCart('Aozora',599)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / T-SHIRTS</p>
+                                <h5>Aozora</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹599</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 category-section-title" data-category-section="women-main">
+                        <h3>VASTRIKA women</h3>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="women" data-name="krishnachura">
+                        <div class="product-card" data-product-url="/product/krishnachura">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA saree 1.png' %}" alt="Krishnachura">
+                                <button class="quick-add" onclick="addToCart('Krishnachura',999)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA WOMEN / SAREES</p>
+                                <h5>Krishnachura</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹999</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="women" data-name="palashi">
+                        <div class="product-card" data-product-url="/product/palashi">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA saree 2.png' %}" alt="Palashi">
+                                <button class="quick-add" onclick="addToCart('Palashi',999)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA WOMEN / SAREES</p>
+                                <h5>Palashi</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹999</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="women" data-name="lalmoti">
+                        <div class="product-card" data-product-url="/product/lalmoti">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA saree 3.png' %}" alt="Lalmoti">
+                                <button class="quick-add" onclick="addToCart('Lalmoti',999)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA WOMEN / SAREES</p>
+                                <h5>Lalmoti</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹999</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="kids" data-name="mrinalini">
+                        <div class="product-card" data-product-url="/product/mrinalini">
+                            <div class="product-image">
+                                <span class="product-badge">HOT</span>
+                                <img src="{% static 'images/VASTRIKA kids.jpeg' %}" alt="Mrinalini">
+                                <button class="quick-add" onclick="addToCart('Mrinalini',549)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">KIDS / SETS</p>
+                                <h5>Mrinalini</h5>
+                                <div class="rating">★★★★☆</div>
+                                <strong>₹549</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="kids" data-name="red floral party dress">
+                        <div class="product-card" data-product-url="/product/rainbow-day-hoodie">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA kids (2).jpeg' %}" alt="Red Floral Party Dress">
+                                <button class="quick-add" onclick="addToCart('Red Floral Party Dress',549)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">KIDS / DRESSES</p>
+                                <h5>Red Floral Party Dress</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹549</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="kids" data-name="teal floral party dress">
+                        <div class="product-card" data-product-url="/product/playful-print-tee">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA kids.png' %}" alt="Teal Floral Party Dress">
+                                <button class="quick-add" onclick="addToCart('Teal Floral Party Dress',549)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">KIDS / DRESSES</p>
+                                <h5>Teal Floral Party Dress</h5>
+                                <div class="rating">★★★★☆</div>
+                                <strong>₹549</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="akagane">
+                        <div class="product-card" data-product-url="/product/akagane">
+                            <div class="product-image">
+                                <span class="product-badge">NEW</span>
+                                <img src="{% static 'images/VASTRIKA tshirt brown.jpeg' %}" alt="Akagane">
+                                <button class="quick-add" onclick="addToCart('Akagane',599)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / T-SHIRTS</p>
+                                <h5>Akagane</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹599</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="women" data-name="ladies jeans">
+                        <div class="product-card" data-product-url="/product/vastrika-ladies-jeans">
+                            <div class="product-image">
+                                <img src="{% static 'images/VASTRIKA ladies jeans.png' %}" alt="Vastrika Ladies Jeans">
+                                <button class="quick-add" onclick="addToCart('Vastrika Ladies Jeans',799)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA WOMEN / JEANS</p>
+                                <h5>Vastrika Ladies Jeans</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹799</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 category-section-title" data-category-section="exclusive">
+                        <h3>VASTRIKA EXCLUSIVE</h3>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="exclusive" data-name="meghaboti">
+                        <div class="product-card" data-product-url="/product/meghaboti">
+                            <div class="product-image">
+                                <span class="product-badge">EXCLUSIVE</span>
+                                <img src="{% static 'images/VASTRIKA exclusive.jpeg' %}" alt="Meghaboti">
+                                <button class="quick-add" onclick="addToCart('Meghaboti',899)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA EXCLUSIVE</p>
+                                <h5>Meghaboti</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹899</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="exclusive" data-name="nilanjali">
+                        <div class="product-card" data-product-url="/product/nilanjali">
+                            <div class="product-image">
+                                <span class="product-badge">EXCLUSIVE</span>
+                                <img src="{% static 'images/VASTRIKA exclusive (2).jpeg' %}" alt="Nilanjali">
+                                <button class="quick-add" onclick="addToCart('Nilanjali',899)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA EXCLUSIVE</p>
+                                <h5>Nilanjali</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹899</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="coral printed polo shirt">
+                        <div class="product-card" data-product-url="/product/coral-printed-polo-shirt">
+                            <div class="product-image">
+                                <span class="product-badge">NEW</span>
+                                <img src="{% static 'images/Coral Printed Polo Shirt with Tags.png' %}" alt="Coral Printed Polo Shirt">
+                                <button class="quick-add" onclick="addToCart('Coral Printed Polo Shirt',699)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / POLOS</p>
+                                <h5>Coral Printed Polo Shirt</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹699</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="green no risk no fun t-shirt">
+                        <div class="product-card" data-product-url="/product/green-no-risk-no-fun-t-shirt">
+                            <div class="product-image">
+                                <img src="{% static 'images/Green “No Risk No Fun” T-Shirt.png' %}" alt="Green “No Risk No Fun” T-Shirt">
+                                <button class="quick-add" onclick="addToCart('Green “No Risk No Fun” T-Shirt',649)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / T-SHIRTS</p>
+                                <h5>Green “No Risk No Fun” T-Shirt</h5>
+                                <div class="rating">★★★★☆</div>
+                                <strong>₹649</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="navy tomura shigaraki anime graphic t-shirt">
+                        <div class="product-card" data-product-url="/product/navy-tomura-shigaraki-anime-graphic-t-shirt">
+                            <div class="product-image">
+                                <img src="{% static 'images/Navy Tomura Shigaraki Anime Graphic T-Shirt.png' %}" alt="Navy Tomura Shigaraki Anime Graphic T-Shirt">
+                                <button class="quick-add" onclick="addToCart('Navy Tomura Shigaraki Anime Graphic T-Shirt',699)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / T-SHIRTS</p>
+                                <h5>Navy Tomura Shigaraki Anime Graphic T-Shirt</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹699</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="pastel blue spicy t-shirt">
+                        <div class="product-card" data-product-url="/product/pastel-blue-spicy-t-shirt">
+                            <div class="product-image">
+                                <img src="{% static 'images/Pastel Blue Spicy T-Shirt Mockup.png' %}" alt="Pastel Blue Spicy T-Shirt">
+                                <button class="quick-add" onclick="addToCart('Pastel Blue Spicy T-Shirt',649)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / T-SHIRTS</p>
+                                <h5>Pastel Blue Spicy T-Shirt</h5>
+                                <div class="rating">★★★★☆</div>
+                                <strong>₹649</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="men" data-name="vastrika planets graphic t-shirt">
+                        <div class="product-card" data-product-url="/product/vastrika-planets-graphic-t-shirt">
+                            <div class="product-image">
+                                <span class="product-badge">HOT</span>
+                                <img src="{% static 'images/Vastrika Planets Graphic T-Shirt.png' %}" alt="Vastrika Planets Graphic T-Shirt">
+                                <button class="quick-add" onclick="addToCart('Vastrika Planets Graphic T-Shirt',679)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">MEN / T-SHIRTS</p>
+                                <h5>Vastrika Planets Graphic T-Shirt</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹679</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="women" data-name="emerald green and pink banarasi saree">
+                        <div class="product-card" data-product-url="/product/emerald-green-pink-banarasi-saree">
+                            <div class="product-image">
+                                <img src="{% static 'images/Emerald Green and Pink Banarasi Saree women.png' %}" alt="Emerald Green and Pink Banarasi Saree">
+                                <button class="quick-add" onclick="addToCart('Emerald Green and Pink Banarasi Saree',1199)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA WOMEN / SAREES</p>
+                                <h5>Emerald Green and Pink Banarasi Saree</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹1199</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="women" data-name="golden yellow banarasi saree with red pallu">
+                        <div class="product-card" data-product-url="/product/golden-yellow-banarasi-saree-red-pallu">
+                            <div class="product-image">
+                                <img src="{% static 'images/Golden Yellow Banarasi Saree with Red Pallu women.png' %}" alt="Golden Yellow Banarasi Saree with Red Pallu">
+                                <button class="quick-add" onclick="addToCart('Golden Yellow Banarasi Saree with Red Pallu',1299)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA WOMEN / SAREES</p>
+                                <h5>Golden Yellow Banarasi Saree with Red Pallu</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹1299</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="women" data-name="light wash wide-leg jeans">
+                        <div class="product-card" data-product-url="/product/light-wash-wide-leg-jeans">
+                            <div class="product-image">
+                                <img src="{% static 'images/Light Wash Wide-Leg Jeans Catalog women.png' %}" alt="Light Wash Wide-Leg Jeans">
+                                <button class="quick-add" onclick="addToCart('Light Wash Wide-Leg Jeans',899)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA WOMEN / JEANS</p>
+                                <h5>Light Wash Wide-Leg Jeans</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹899</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="women" data-name="royal blue gold zari saree">
+                        <div class="product-card" data-product-url="/product/royal-blue-gold-zari-saree">
+                            <div class="product-image">
+                                <span class="product-badge">EXCLUSIVE</span>
+                                <img src="{% static 'images/Royal Blue Gold Zari Saree women.png' %}" alt="Royal Blue Gold Zari Saree">
+                                <button class="quick-add" onclick="addToCart('Royal Blue Gold Zari Saree',1399)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">VASTRIKA WOMEN / SAREES</p>
+                                <h5>Royal Blue Gold Zari Saree</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹1399</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="kids" data-name="maroon and ivory layered party frock">
+                        <div class="product-card" data-product-url="/product/maroon-ivory-layered-party-frock">
+                            <div class="product-image">
+                                <img src="{% static 'images/Maroon and Ivory Layered Party Frock kid.png' %}" alt="Maroon and Ivory Layered Party Frock">
+                                <button class="quick-add" onclick="addToCart('Maroon and Ivory Layered Party Frock',699)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">KIDS / DRESSES</p>
+                                <h5>Maroon and Ivory Layered Party Frock</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹699</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="kids" data-name="pink rhinestone floral party dress">
+                        <div class="product-card" data-product-url="/product/pink-rhinestone-floral-party-dress">
+                            <div class="product-image">
+                                <img src="{% static 'images/Pink Rhinestone Floral Party Dress kid.png' %}" alt="Pink Rhinestone Floral Party Dress">
+                                <button class="quick-add" onclick="addToCart('Pink Rhinestone Floral Party Dress',729)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">KIDS / DRESSES</p>
+                                <h5>Pink Rhinestone Floral Party Dress</h5>
+                                <div class="rating">★★★★★</div>
+                                <strong>₹729</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 product-item" data-category="kids" data-name="olive floral vastrika dhoti dress">
+                        <div class="product-card" data-product-url="/product/olive-floral-vastrika-dhoti-dress">
+                            <div class="product-image">
+                                <img src="{% static 'images/Olive Floral Vastrika Dhoti Dress kid.png' %}" alt="Olive Floral Vastrika Dhoti Dress">
+                                <button class="quick-add" onclick="addToCart('Olive Floral Vastrika Dhoti Dress',679)">+ Add</button>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-category">KIDS / DRESSES</p>
+                                <h5>Olive Floral Vastrika Dhoti Dress</h5>
+                                <div class="rating">★★★★☆</div>
+                                <strong>₹679</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="{% static 'js/script.js' %}?v=3"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

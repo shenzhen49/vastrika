@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | VASTRIKA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar bg-white shadow-sm">
+        <div class="container">
+            <a class="brand-logo" href="{% url 'home' %}">VASTRIKA</a>
+            <div class="d-flex align-items-center gap-3">
+                <span>{{ request.user.get_full_name|default:request.user.email }}</span>
+                <a class="btn btn-outline-dark" href="{% url 'logout' %}">LOG OUT</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="section-padding">
+        <div class="container">
+            <div class="section-heading">
+                <p>ACCOUNT</p>
+                <h1>My Orders</h1>
+            </div>
+            {% if orders %}
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>#{{ order.id }}<br><small>{{ order.items.count }} item{{ order.items.count|pluralize }}</small></td>
+                                    <td>{{ order.created_at|date:"d M Y" }}</td>
+                                    <td>{{ order.get_status_display }}</td>
+                                    <td class="text-end">₹{{ order.total }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted">You have not placed any orders yet.</p>
+                <a class="btn btn-dark" href="{% url 'shop' %}">START SHOPPING</a>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
