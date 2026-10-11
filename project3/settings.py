@@ -30,9 +30,11 @@ SECRET_KEY = 'django-insecure-cw$h^67$f8t20)i1(m&!6t!em%!%0g_21#-2bh&1vp*tj)p8+q
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',')
-    if host.strip()
+    '*'
+#    host.strip()
+#     for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,testserver').split(',')
+#     if h ost.strip()
+
 ]
 
 RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID', '')
